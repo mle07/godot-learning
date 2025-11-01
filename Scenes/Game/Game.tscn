@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcnd07bjf1grh"]
+
+[ext_resource type="Script" uid="uid://bsm33r1d6vr07" path="res://Scenes/Game/Game.cs" id="1_rdw05"]
+[ext_resource type="Texture2D" uid="uid://cb63xk7otx48b" path="res://Assets/GameBg.png" id="2_gwu2e"]
+[ext_resource type="PackedScene" uid="uid://buoptplmkqwae" path="res://Scenes/Paddle/Paddle.tscn" id="3_xbxml"]
+[ext_resource type="PackedScene" uid="uid://cqt3k00siughx" path="res://Scenes/Gem/Gem.tscn" id="4_ln2h6"]
+[ext_resource type="AudioStream" uid="uid://dioglf3b4xlxg" path="res://Assets/bgm_action_5.mp3" id="5_y3kpf"]
+[ext_resource type="AudioStream" uid="uid://bf7o1380mymo" path="res://Assets/spell1_0.wav" id="6_3k6gv"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("_timer", "_scoreLabel", "_music", "_scoreEffect")]
+script = ExtResource("1_rdw05")
+_gemScene = ExtResource("4_ln2h6")
+_timer = NodePath("Timer")
+_scoreLabel = NodePath("Label")
+_music = NodePath("Music")
+_scoreEffect = NodePath("ScoreEffects")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(558, 325)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_gwu2e")
+metadata/_edit_lock_ = true
+
+[node name="Paddle" parent="." instance=ExtResource("3_xbxml")]
+position = Vector2(550, 594)
+_speed = 500.0
+_margin = 55.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5999999999999999
+autostart = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 47.0
+offset_top = 53.0
+offset_right = 108.0
+offset_bottom = 76.0
+theme_override_colors/font_shadow_color = Color(0.35098583, 0.48151213, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 20
+text = "Score: 0"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_y3kpf")
+volume_db = -18.095
+autoplay = true
+
+[node name="ScoreEffects" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_3k6gv")
+volume_db = -19.185
