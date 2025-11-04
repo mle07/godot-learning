@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwf4dqilj5ml4"]
+
+[ext_resource type="Script" uid="uid://b4w6fckwwmevy" path="res://Scenes/Game/Game.cs" id="1_ln2h6"]
+[ext_resource type="PackedScene" uid="uid://cyracfmyuklv7" path="res://Scenes/Plane/Plane.tscn" id="2_gwu2e"]
+[ext_resource type="PackedScene" uid="uid://depnyog2451fn" path="res://Scenes/Barrier/Barrier.tscn" id="3_xbxml"]
+[ext_resource type="PackedScene" uid="uid://dnokfmil33cmm" path="res://Scenes/Pipes/Pipes.tscn" id="4_ln2h6"]
+[ext_resource type="PackedScene" uid="uid://dcmd34ss1056u" path="res://Scenes/Hud/Hud.tscn" id="6_3k6gv"]
+[ext_resource type="PackedScene" uid="uid://c8gwpmsiqyqb1" path="res://Scenes/GameOver/GameOver.tscn" id="7_1q8bt"]
+[ext_resource type="PackedScene" uid="uid://crshk1n30vclj" path="res://Scenes/ParallaxBg/ParallaxBg.tscn" id="7_gvja8"]
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("spawnUpper", "spawnLower", "pipesHolder", "spawnPipeTimer", "plane")]
+script = ExtResource("1_ln2h6")
+spawnUpper = NodePath("SpawnUpper")
+spawnLower = NodePath("SpawnLower")
+pipes = ExtResource("4_ln2h6")
+pipesHolder = NodePath("PipesHolder")
+spawnPipeTimer = NodePath("Timer")
+plane = NodePath("Plane")
+
+[node name="Plane" parent="." instance=ExtResource("2_gwu2e")]
+position = Vector2(202, 557)
+jumpForce = -450.0
+
+[node name="Barrier" parent="." instance=ExtResource("3_xbxml")]
+position = Vector2(-7, -21)
+
+[node name="Barrier2" parent="." instance=ExtResource("3_xbxml")]
+position = Vector2(-18, 894)
+
+[node name="SpawnUpper" type="Marker2D" parent="."]
+position = Vector2(530, 330)
+
+[node name="SpawnLower" type="Marker2D" parent="."]
+position = Vector2(530, 570)
+
+[node name="PipesHolder" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("6_3k6gv")]
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("7_1q8bt")]
+visible = false
+
+[node name="ParallaxBg" parent="." instance=ExtResource("7_gvja8")]

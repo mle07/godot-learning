@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnwdapsjqdpv3"]
+
+[ext_resource type="Script" uid="uid://br67y7chorj3p" path="res://Scenes/TransitionScene/TransitionScene.cs" id="1_56edq"]
+[ext_resource type="Texture2D" uid="uid://cssciw0r4v7j7" path="res://Assets/background/sky.png" id="1_dr3rg"]
+[ext_resource type="LabelSettings" uid="uid://bt0pk1y1cvcou" path="res://Resources/LG_48_Red.tres" id="2_3iq2u"]
+
+[node name="TransitionScene" type="Control" node_paths=PackedStringArray("timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_56edq")
+timer = NodePath("Timer")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_dr3rg")
+expand_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.5
+offset_top = -24.5
+offset_right = 109.5
+offset_bottom = 24.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "LOADING..."
+label_settings = ExtResource("2_3iq2u")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
