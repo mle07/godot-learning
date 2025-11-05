@@ -12,11 +12,23 @@ config_version=5
 
 config/name="AngryAnimals"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="res://icon.svg"
+
+[display]
+
+window/size/window_width_override=1728
+window/size/window_height_override=972
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
 project/assembly_name="AngryAnimals"
+
+[editor]
+
+naming/default_signal_callback_name="On{node_name}{signal_name}"
+naming/default_signal_callback_to_self_name="On{signal_name}"
+naming/scene_name_casing=1
+naming/script_name_casing=1
 
 [rendering]
 
